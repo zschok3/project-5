@@ -8,6 +8,8 @@ As we discussed, `docker-compose` makes it easier to create, manage and connect 
 
 Presently, there's only a placeholder directory for your Flask app, and a `docker-compose` configuration file. You will copy over `brevets/` from your completed project 4, add a MongoDB service to docker-compose and your Flask app. You will also add two buttons named `Submit` and `Display` to the webpage. `Submit` must store the information (brevet distance, start time, checkpoints and their opening and closing times) in the database (overwriting existing ones). `Display` will fetch the information from the database and fill in the form with them.
 
+Recommended: Review [MongoDB README](MONGODB.md).
+
 ## Tasks
 
 1. Add two buttons `Submit` and `Display` in the ACP calculator page.
