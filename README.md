@@ -4,11 +4,11 @@ Brevet time calculator with MongoDB!
 ## Overview
 
 You'll add a storage to your previous project using MongoDB and `docker-compose`.
-As we discussed, `docker-compose` makes it easier to create, manage and connect multiple container to create a single service comprised of different subservices.
+As we discussed, `docker-compose` makes it easier to create, manage and connect multiple container to create a single service comprised of different sub-services.
 
 Presently, there's only a placeholder directory for your Flask app, and a `docker-compose` configuration file. You will copy over `brevets/` from your completed project 4, add a MongoDB service to docker-compose and your Flask app. You will also add two buttons named `Submit` and `Display` to the webpage. `Submit` must store the information (brevet distance, start time, checkpoints and their opening and closing times) in the database (overwriting existing ones). `Display` will fetch the information from the database and fill in the form with them.
 
-Recommended: Review [MongoDB README](MONGODB.md).
+Recommended: Review [MongoDB README](MONGODB.md) and[Docker Compose README](COMPOSE.md).
 
 ## Tasks
 
@@ -40,7 +40,7 @@ Recommended: Review [MongoDB README](MONGODB.md).
 	
 	* Writing at least 2 correct tests using nose (put them in `tests`, follow Project 3 if necessary), and all should pass.
 
-* If DB operations do not work as expected (either submit fails to store information, or display fails to retrive and show information correctly), 60 points will be docked.
+* If DB operations do not work as expected (either submit fails to store information, or display fails to retrieve and show information correctly), 60 points will be docked.
 
 * If database-related tests are not found in `brevets/tests/`, or are incomplete, or do not pass, 20 points will be docked.
 
