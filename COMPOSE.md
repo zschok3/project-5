@@ -126,5 +126,22 @@ docker compose restart
 If you ran in detached mode, or are just looking to view service outputs, use:
 
 ```
-docker compose log
+docker compose logs
+```
+
+### Executing commands / interactive shell,
+You can still use the old docker commands on containers set up by compose, there's no magic here.
+But compose makes everything easier.
+
+If you need to execute a command in a running container, you don't have to look up container name any more. Just reference by
+service name:
+
+```
+docker compose exec $SERVICE $COMMAND
+```
+
+For example:
+
+```
+docker compose exec web /bin/bash
 ```
