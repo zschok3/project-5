@@ -3,5 +3,6 @@ version: '3'
 services:
     brevets:
         build: brevets/.
-        command: python -u flask_brevets.py
-        ports: "5000:5000"
+        command: python flask_brevets.py
+        ports: 
+          - "5001:5000"
