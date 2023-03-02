@@ -1,0 +1,71 @@
+
+               $('#insert').click(
+                    function(event) {
+                        event.preventDefault();
+                        // Referencing by tag type (input) and attribute (name)
+                        // Notice the difference between this and referencing by class (.)
+                        // and referencing by id (#).
+                        var km = document.getElementById("begin_date").value;
+                        var begin = document.getElementById("begin_date").value;
+                        var cntrl = document.getElementById("brevet_dist_km").value;
+                        var open = document.getElementById("open").value;
+                        var close = document.getElementById("close").value;
+
+                        console.log(open);
+                        console.log(close);
+                        // For every row (go to line 52 and see ways to reference rows: by tag (tr) or
+                        // by class (listitem). Class is better because it's more specific in this case.
+                        // And we don't want to accidentally pick up the table header row.
+                        $('.listitem').each(function() {
+                            // Find the row object
+                            var item = $(this);
+                            // In this row, find description and priority
+                            var description = item.find("input[name='description']").val();
+                            var priority = item.find("input[name='priority']").val();
+                            // If not empty, append to our list.
+                            if (description) {
+                                // Construct a dictionary
+                                item_json = {
+                                    "description": description, 
+                                    "priority": priority 
+                                }
+                                // Push to list
+                                items.push(item_json);
+                            }
+                        });
+                        // Construct the data we will be sending Flask
+                        var new_todo_list = {
+                            "title": title, 
+                            "items": items};
+                        // Perfect! Now we have all the information that the user's entered
+                        // into the form. All we have to do is send a POST request to have
+                        // the backend store it in the database!
+                        $.ajax({
+                          // Expect JSON responses from our backend
+                          dataType: 'json', // expected output format (getJSON sets this as well)
+                          // Specify we're sending JSON as well
+                          contentType: "application/json",
+                          // Request method: POST
+                          type: 'POST',
+                          // URL: specified above
+                          url: SAVE_URL,
+                          // Important step that we didn't use to do in P4:
+                          // Convert our constructed dictionary to a JSON string!
+                          data: JSON.stringify(new_todo_list),
+                          // On a successful response from flask:
+                          success: function(data) {
+                              // Check the status code we set in Flask
+                              // Recall: 1 was success, 0 was failure
+                              if (data.status == 1) {
+                                  console.log("Successfully inserted! Response: ", data);
+                              }
+                              else {
+                                  console.log("Insertion failed: ", data);
+                              }
+                           },
+                          // On error
+                          error: function(err){
+                           console.log("Error: ", err); }
+                        });
+                    }
+                );

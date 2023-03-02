@@ -1,3 +1,14 @@
+Kyle Zschokke
+kzschok3@uoregon.edu
+
+
+In the previous project I implemented a flask server that calculates brevet times according to ACP formulas.  The algorithm is simple, and is basically the same as any that would calculate change for coins.  The same loop / algo was used for both close and open brevets, with just the speeds changed.  The algorithm is written in 'acp_times.py', and used in the server that is ran in 'flask_brevets.py'. This server calculates everything and sends a json response to the front end, which then updates it without refresing the page. Upon running the server in the docker container with start command, all you need to do is select a control and a start date and time, and then enter distances, and it will give the splits as needed.
+
+Adding on to this, I implemented a mongoDB and linked it to the original flask server using network within docker.  Specifically, I used docker compose to help the containers network.  This also meant we had to create a docker compose file. Now, the ACP page can save data and load it back on command, by pressing the submit and display buttons respectively.
+
+
+
+
 # UOCIS322 - Project 5 #
 Brevet time calculator with MongoDB!
 
