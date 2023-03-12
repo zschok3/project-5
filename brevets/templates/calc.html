@@ -33,8 +33,8 @@
          <h1>ACP Brevet Times</h1>
          <p>This worksheet is for ACP-sanctioned brevets between 200 and 1000 kilometers.</p>
          <div class="col-md-6">
-            <button id="submit">Save</button>
-            <button id="display">Fetch</button>
+            <button id="submit">Submit</button>
+            <button id="display">Display</button>
         </div>
          <!--
             If there are any warnings or other messages from a prior
@@ -193,6 +193,14 @@ function createJsonFromTable() {
          // Recall: 1 was success, 0 was failure
       if (data.status == 1) {
          console.log("Successfully inserted! Response: ", data);
+         $('.control').each(function(){
+            var row = $(this);
+            row.find("input[name='km']").val('');
+            row.find("input[name='miles']").val('');
+            row.find("input[name='open']").val('');
+            row.find("input[name='close']").val('');
+
+         })
       }
       else {
       console.log("Insertion failed: ", data);
