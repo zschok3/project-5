@@ -30,6 +30,11 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
    distances = [1000, 800, 600, 400, 200, 0]
    speeds = [26, 28, 28, 30, 32, 34]
 
+   if control_dist_km > (brevet_dist_km * 1.2):
+      control_dist_km = brevet_dist_km
+   if control_dist_km <= 0:
+      return brevet_start_time
+
    for i in range(len(distances)):
       if control_dist_km > distances[i]: 
          distance = max(control_dist_km - distances[i], 0)
@@ -53,6 +58,11 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     time = 0
     distances = [1000, 800, 600, 400, 200, 0]
     speeds = [13.333, 11.428, 11.428, 15, 15, 15]
+
+    if control_dist_km > (brevet_dist_km * 1.2):
+      control_dist_km = brevet_dist_km
+    if control_dist_km <= 0:
+      return brevet_start_time
 
     for i in range(len(distances)):
       if control_dist_km > distances[i]: 
